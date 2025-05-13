@@ -11,10 +11,10 @@ app = FastAPI()
 
 @app.api_route("/{full_path:path}", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
 async def proxy(full_path: str, request: Request):
-    if full_path.startswith("api"):
-        target = f"{BACKEND_URL}/{full_path[4:]}"
+    if full_path == "" or full_path == "/":
+        target = FRONTEND_URL
     else:
-        target = f"{FRONTEND_URL}/{full_path}"
+        target = f"{BACKEND_URL}/{full_path}"
 
     async with httpx.AsyncClient() as client:
         response = await client.request(
