@@ -1,5 +1,11 @@
 FROM python:3.12.6-slim
 
+ARG BACKEND_URL
+ARG FRONTEND_URL
+
+ENV BACKEND_URL=$BACKEND_URL
+ENV FRONTEND_URL=$FRONTEND_URL
+
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock* ./
