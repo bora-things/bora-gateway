@@ -26,6 +26,6 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/isaacmsl/matriculaai-gateway:latest
-          build-args:
-            BACKEND_URL: ${{ secrets.BACKEND_URL }}
-            FRONTEND_URL: ${{ secrets.FRONTEND_URL }}
+          build-args: |
+            BACKEND_URL=${{ secrets.BACKEND_URL }}
+            FRONTEND_URL=${{ secrets.FRONTEND_URL }}
